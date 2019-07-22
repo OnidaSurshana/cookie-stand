@@ -4,17 +4,26 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 //grabs the table from html.
 var table = document.getElementById("table1");
-var masterBranch = {
-  location: "Christ Church, Oistins",
-  customersPHR: randomNum,
-  salesPP: [],
-  getSalesPP: function() {
-      for (var i = 0; i < hours.length; i++ ) {
-
-      }
+var store1 = {
+  minCust: 23,
+  maxCust: 65,
+  avgCookie: 6.3,
+  location: "1st and Pike",
+  cookiesPerHour: [],
+  calculateHourlyCookies: function() {
+    this.cookiesPerHour = [];
+    for (var i = 0; i < hours.length; i++ ) {
+      var cookieCalc = this.generateRandomNumber() * this.avgCookie;
+      this.cookiesPerHour.push(Math.ceil(cookieCalc));
+    }
+  },
+  generateRandomNumber: function() {
+    var min = Math.ceil(this.minCust);
+    var max = Math.floor(this.maxCust);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  
 }
+console.log(store1);
 
 function renderHeader() {
 //1.create a row
