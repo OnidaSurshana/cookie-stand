@@ -5,17 +5,17 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 //create an object litteral to store all the info for one store
-var store1 = {
+function Store() {
 //Set the minimum and maximum amount of lickrish people you get per hour as well as the average amount of cookies the fatties buy.
-  minCust: 23,
-  maxCust: 65,
-  avgCookie: 6.3,
+  this.minCust= 23;
+  this.maxCust= 65;
+  this.avgCookie= 6.3;
 //the location of the store (not the name apparently)
-  location: "1st and Pike",
+  this.location= "1st and Pike";
 //empty array used to store the amount of hourly cookies fatties buy.
-  cookiesPerHour: [],
+  this.cookiesPerHour= [];
 //function to calculate the hourly cookies
-  calculateHourlyCookies: function() {
+  this.calculateHourlyCookies= function() {
 //emties out the array so that if you calculate it twice two answers arent pushed to the array (even though i dont get why this isnt after the calculation)
     this.cookiesPerHour = [];
 //'as long as "i" = 0 and i is less than 14 add 1 to i'
@@ -25,13 +25,13 @@ var store1 = {
 // send the cookieCalc answer above to the empy cookies per hour array and round it up 
       this.cookiesPerHour.push(Math.ceil(cookieCalc));
     }
-  },
-  generateRandomNumber: function() {
+  };
+  this.generateRandomNumber= function() {
     var min = Math.ceil(this.minCust);
     var max = Math.floor(this.maxCust);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  },
-  renderList: function() {
+  };
+  this.renderList= function() {
     var list = document.getElementById("list1");
      //create a var to store total and initialize to 0
     var total = 0;
@@ -253,6 +253,8 @@ row.appendChild(cell);
 }
  
   // renderHeader();
+  //create a new store object from our constructor function
+var store1 = new Store();
 store1.calculateHourlyCookies();
 store1.renderList();
 
