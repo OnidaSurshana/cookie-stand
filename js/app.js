@@ -95,6 +95,141 @@ var store2 = {
     } 
   }
 
+  var store3 = {
+    //Set the minimum and maximum amount of lickrish people you get per hour as well as the average amount of cookies the fatties buy.
+      minCust: 11,
+      maxCust: 38,
+      avgCookie: 3.7,
+    //the location of the store (not the name apparently)
+      location: "Seatle Center",
+    //empty array used to store the amount of hourly cookies fatties buy.
+      cookiesPerHour: [],
+    //function to calculate the hourly cookies
+      calculateHourlyCookies: function() {
+    //emties out the array so that if you calculate it twice two answers arent pushed to the array (even though i dont get why this isnt after the calculation)
+        this.cookiesPerHour = [];
+    //'as long as "i" = 0 and i is less than 14 add 1 to i'
+        for (var i = 0; i < hours.length; i++ ) {
+    //'the amount of cookies is equal to the number generated bellow multiplied by 6.3'
+          var cookieCalc = this.generateRandomNumber() * this.avgCookie;
+    // send the cookieCalc answer above to the empy cookies per hour array and round it up 
+          this.cookiesPerHour.push(Math.ceil(cookieCalc));
+        }
+      },
+      generateRandomNumber: function() {
+        var min = Math.ceil(this.minCust);
+        var max = Math.floor(this.maxCust);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+      renderList: function() {
+        var list = document.getElementById("list3");
+         //create a var to store total and initialize to 0
+        var total = 0;
+        //pull an object from the array and put it in the Li
+        for (var i = 0; i < hours.length; i++) {
+          var li1 = document.createElement("li");
+          var cookiesSold = this.cookiesPerHour[i];
+          //sum previous total and cookies sold and store the result in total
+          total = total + cookiesSold;
+          li1.textContent = `${hours[i]}: ${cookiesSold} cookies`;
+          list.appendChild(li1);
+        } 
+        var totalLi = document.createElement("li");
+        totalLi.textContent = `Total: ${total} cookies`;
+        list.appendChild(totalLi);
+      } 
+    }
+
+    var store4 = {
+      //Set the minimum and maximum amount of lickrish people you get per hour as well as the average amount of cookies the fatties buy.
+        minCust: 20,
+        maxCust: 38,
+        avgCookie: 2.3,
+      //the location of the store (not the name apparently)
+        location: "Capital Hill",
+      //empty array used to store the amount of hourly cookies fatties buy.
+        cookiesPerHour: [],
+      //function to calculate the hourly cookies
+        calculateHourlyCookies: function() {
+      //emties out the array so that if you calculate it twice two answers arent pushed to the array (even though i dont get why this isnt after the calculation)
+          this.cookiesPerHour = [];
+      //'as long as "i" = 0 and i is less than 14 add 1 to i'
+          for (var i = 0; i < hours.length; i++ ) {
+      //'the amount of cookies is equal to the number generated bellow multiplied by 6.3'
+            var cookieCalc = this.generateRandomNumber() * this.avgCookie;
+      // send the cookieCalc answer above to the empy cookies per hour array and round it up 
+            this.cookiesPerHour.push(Math.ceil(cookieCalc));
+          }
+        },
+        generateRandomNumber: function() {
+          var min = Math.ceil(this.minCust);
+          var max = Math.floor(this.maxCust);
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        },
+        renderList: function() {
+          var list = document.getElementById("list4");
+           //create a var to store total and initialize to 0
+          var total = 0;
+          //pull an object from the array and put it in the Li
+          for (var i = 0; i < hours.length; i++) {
+            var li1 = document.createElement("li");
+            var cookiesSold = this.cookiesPerHour[i];
+            //sum previous total and cookies sold and store the result in total
+            total = total + cookiesSold;
+            li1.textContent = `${hours[i]}: ${cookiesSold} cookies`;
+            list.appendChild(li1);
+          } 
+          var totalLi = document.createElement("li");
+          totalLi.textContent = `Total: ${total} cookies`;
+          list.appendChild(totalLi);
+        } 
+      }
+      var store5 = {
+        //Set the minimum and maximum amount of lickrish people you get per hour as well as the average amount of cookies the fatties buy.
+          minCust: 2,
+          maxCust: 16,
+          avgCookie: 4.6,
+        //the location of the store (not the name apparently)
+          location: "Alki",
+        //empty array used to store the amount of hourly cookies fatties buy.
+          cookiesPerHour: [],
+        //function to calculate the hourly cookies
+          calculateHourlyCookies: function() {
+        //emties out the array so that if you calculate it twice two answers arent pushed to the array (even though i dont get why this isnt after the calculation)
+            this.cookiesPerHour = [];
+        //'as long as "i" = 0 and i is less than 14 add 1 to i'
+            for (var i = 0; i < hours.length; i++ ) {
+        //'the amount of cookies is equal to the number generated bellow multiplied by 6.3'
+              var cookieCalc = this.generateRandomNumber() * this.avgCookie;
+        // send the cookieCalc answer above to the empy cookies per hour array and round it up 
+              this.cookiesPerHour.push(Math.ceil(cookieCalc));
+            }
+          },
+          generateRandomNumber: function() {
+            var min = Math.ceil(this.minCust);
+            var max = Math.floor(this.maxCust);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+          },
+          renderList: function() {
+            var list = document.getElementById("list5");
+             //create a var to store total and initialize to 0
+            var total = 0;
+            //pull an object from the array and put it in the Li
+            for (var i = 0; i < hours.length; i++) {
+              var li1 = document.createElement("li");
+              var cookiesSold = this.cookiesPerHour[i];
+              //sum previous total and cookies sold and store the result in total
+              total = total + cookiesSold;
+              li1.textContent = `${hours[i]}: ${cookiesSold} cookies`;
+              list.appendChild(li1);
+            } 
+            var totalLi = document.createElement("li");
+            totalLi.textContent = `Total: ${total} cookies`;
+            list.appendChild(totalLi);
+          } 
+        }
+
+
 
 function renderHeader() {
   //grabs the table from html with the ID *table1*.
@@ -124,6 +259,14 @@ store1.renderList();
 store2.calculateHourlyCookies();
 store2.renderList();
 
+store3.calculateHourlyCookies();
+store3.renderList();
+
+store4.calculateHourlyCookies();
+store4.renderList();
+
+store5.calculateHourlyCookies();
+store5.renderList();
 
 
 
