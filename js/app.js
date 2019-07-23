@@ -2,6 +2,7 @@
 
 //store all the hours inside an array to be used later.
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+var stores = [];
 
 //create a constructor function to store all the data for each store
 function Store(min, max, avg, location) {
@@ -13,7 +14,7 @@ function Store(min, max, avg, location) {
   this.location= location;
   //empty array used to store the amount of hourly cookies fatties buy.
   this.cookiesPerHour= [];
-
+  stores.push(this);
 }
 
 //function to calculate the hourly cookies
@@ -59,6 +60,7 @@ Store.prototype.generateRandomNumber= function() {
     cell.textContent = this.cookiesPerHour[times];
     //then put the cells in a row
     row.appendChild(cell);
+
   }
   //create a td cell and store it in the var "cell"
   var cell = document.createElement("td");
@@ -104,29 +106,39 @@ function renderHeader() {
   row.appendChild(cell);
   //write the string "Total" inside cell
   cell.textContent = "Total";
+
 }
 function renderFooter() {
+  var table = document.getElementById("table1");
+  var row = document.createElement("tr")
+  table.appendChild(row)
+  var cell = document.createElement("td")
+  row.appendChild(cell)
+  cell.textContent = "Total";
+  var grandTotal = 0;
+  for (var currentHour = 0; currentHour < hours.length; currentHour++) {
 
+ 
+    var total = 0;
+    for (var currentStore = 0; currentStore < stores.length; currentStore++) {
+      total = total + stores[currentStore].cookiesPerHour[currentHour];
+    } 
+    var cell = document.createElement("td")
+    row.appendChild(cell)
+    cell.textContent = total;
+    grandTotal += total;
+  }
+  var cell = document.createElement("td")
+    row.appendChild(cell)
+    cell.textContent = grandTotal;
 }
-
 function renderTable() {
   renderHeader();
-  store1.calculateHourlyCookies();
-  store1.renderRow();
-  
-  store2.calculateHourlyCookies();
-  store2.renderRow();
-  
-  store3.calculateHourlyCookies();
-  store3.renderRow();
-  
-  store4.calculateHourlyCookies();
-  store4.renderRow();
-  
-  store5.calculateHourlyCookies();
-  store5.renderRow();
-  
+  for (var i = 0; i < stores.length; i++) {
+    stores[i].calculateHourlyCookies();
+     stores[i].renderRow();
+  }
   renderFooter();
 }
-
+  
 renderTable();
