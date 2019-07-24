@@ -71,11 +71,11 @@ Store.prototype.generateRandomNumber= function() {
 };
 
 //create a new store object from our constructor function for all 5 
-var store1 = new Store(23, 65, 6.3,"1st and Pike");
-var store2 = new Store(3, 24, 1.2,"SeaTac Airport");
-var store3 = new Store(11, 38, 3.7,"Seattle Center");
-var store4 = new Store(20, 38, 2.3,"Capitol Hill");
-var store5 = new Store(2, 16, 2.6,"Alki");
+new Store(23, 65, 6.3,"1st and Pike");
+new Store(3, 24, 1.2,"SeaTac Airport");
+new Store(11, 38, 3.7,"Seattle Center");
+new Store(20, 38, 2.3,"Capitol Hill");
+new Store(2, 16, 2.6,"Alki");
 
 //make a render header function
 function renderHeader() {
